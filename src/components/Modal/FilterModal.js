@@ -1,21 +1,27 @@
-import { Layout } from "antd";
+import { Modal } from "antd";
 import FilterComponent from "../Filter/FilterComponent";
-const { Sider } = Layout;
 
-const SidebarComponent = (props) => {
+const FilterModal = (props) => {
   const {
     applyLoading,
+    filterModalOpen,
     prizeAmount,
     onFindByYear,
     onSetYear,
     onSetPrizeAmount,
     onSetShowYear,
     onSetNobelPrizes,
+    onSetFilterModalOpen,
   } = props;
 
+
   return (
-    <Sider
-      className={`bg-white w-72  min-w-0 max-w-sm flex-none  duration-300 left-0 hidden md:block  drop-shadow-md`}
+    <Modal
+      title="Filters"
+      open={filterModalOpen}
+      onCancel={() => {onSetFilterModalOpen(false)}}
+      width={350}
+      footer={null}
     >
       <FilterComponent
         applyLoading={applyLoading}
@@ -26,8 +32,8 @@ const SidebarComponent = (props) => {
         onSetShowYear={onSetShowYear}
         onSetNobelPrizes={onSetNobelPrizes}
       />
-    </Sider>
+    </Modal>
   );
 };
 
-export default SidebarComponent;
+export default FilterModal;
