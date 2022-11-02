@@ -1,23 +1,34 @@
-import './ContentComponent.css';
+import "./ContentComponent.css";
 import { Layout, Pagination } from "antd";
 
 // Components
 import NobelPrizeItem from "../NobelPrize/NobelPrizeItem";
 const { Content } = Layout;
 
-const HeaderComponent = () => {
+const HeaderComponent = (props) => {
+  const { nobelPrizes } = props;
+
+  const nobelPrizeItems = nobelPrizes.map((nobelPrize, index) => {
+    let laureates = nobelPrize.laureates;
+    let title = `${nobelPrize.categoryFullName.en} (${nobelPrize.awardYear})`;
+    return <NobelPrizeItem key={index} title={title} laureates={laureates} />;
+  });
+
   return (
-    <Content className="px-5 lg:px-12">
-      <div>
+    <Content className=" md:px-12 ">
+      <div className="bg-slate-100" style={{ minHeight: 580 }}>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-5">
-          <NobelPrizeItem />
+          {nobelPrizeItems}
         </div>
-        <Pagination
-          className="text-end "
-          defaultCurrent={1}
-          total={50}
-          showSizeChanger={false}
-        />
+
+        {nobelPrizes.length > 0 && (
+          <Pagination
+            className="text-end "
+            defaultCurrent={1}
+            total={50}
+            showSizeChanger={false}
+          />
+        )}
       </div>
     </Content>
   );

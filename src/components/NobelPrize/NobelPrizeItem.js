@@ -1,10 +1,31 @@
 import { Card, Collapse } from "antd";
 const { Panel } = Collapse;
 
-const NobelPrizeItem = () => {
+const NobelPrizeItem = (props) => {
+  const { title, laureates } = props;
+  
+  const laureateItems = laureates && laureates.map((laureate, index) => {
+    let laureateName =
+      "fullName" in laureate
+        ? laureate.fullName.en
+        : "" || "orgName" in laureate
+        ? laureate.orgName.en
+        : "";
+    let motivation = laureate.motivation.en
+
+    return (
+      <Panel key={index} header={laureateName} className="text-base site-collapse-custom-panel">
+        <p className="text-sm md:text-base font-medium text-justify">
+          Motivation :{" "}
+          <span className="text-sm md:text-base font-normal">{motivation}</span>
+        </p>
+      </Panel>
+    );
+  });
+
   return (
     <Card
-      title="Card Title"
+      title={title}
       className=" w-full drop-shadow-sm rounded-md"
       headStyle={{
         whiteSpace: "normal",
@@ -19,14 +40,7 @@ const NobelPrizeItem = () => {
         bordered={false}
         className="site-collapse-custom-collapse"
       >
-        <Panel header="Laureate Name" className="text-base site-collapse-custom-panel">
-          <p className="text-sm md:text-base font-medium text-justify">
-            Motivation :{" "}
-            <span className="text-sm md:text-base font-normal">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis architecto laudantium nam sunt praesentium delectus dicta officia odit consequatur autem. Ipsa molestias minima pariatur ipsum ex! Sunt qui dicta amet!
-            </span>
-          </p>
-        </Panel>
+        {laureateItems}
       </Collapse>
     </Card>
   );

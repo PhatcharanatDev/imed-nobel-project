@@ -31,3 +31,24 @@
   .ant-pagination-item-link-icon {
   color: #024469 !important ;
 }
+
+.ant-card-head-title {
+  white-space: normal !important;
+}
+
+[data-theme="compact"]
+  .site-collapse-custom-collapse
+  .site-collapse-custom-panel,
+.site-collapse-custom-collapse .site-collapse-custom-panel {
+  margin-bottom: 24px;
+  overflow: hidden;
+  --tw-bg-opacity: 1 !important;
+  background-color: rgb(241 245 249 / var(--tw-bg-opacity)) !important;
+  border: 0px;
+  border-radius: 2px;
+}
+
+.ant-collapse > .ant-collapse-item,
+.ant-collapse-borderless > .ant-collapse-item {
+  border-bottom: 0 !important;
+}
