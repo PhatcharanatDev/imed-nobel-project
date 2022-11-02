@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Layout, Button } from "antd";
 import { AiFillFilter } from "react-icons/ai";
@@ -8,12 +8,9 @@ import ContentComponent from "./components/Content/ContentComponent";
 
 function App() {
   const [year, setYear] = useState(0);
+  const [showYear, setShowYear] = useState(false);
   const [nobelPrizes, setNobelPrizes] = useState([]);
   const [prizeAmount, setPrizeAmount] = useState(0);
-
-  useEffect(() => {
-    console.log(year);
-  }, [year]);
 
   const findByYear = async () => {
     await setTimeout(() => {
@@ -22,6 +19,7 @@ function App() {
           `https://api.nobelprize.org/2.1/nobelPrizes?nobelPrizeYear=${year}`
         )
         .then((response) => {
+          setShowYear(true);
           setNobelPrizes(response.data.nobelPrizes);
           summaryPrizeAmount(response.data.nobelPrizes);
         })
@@ -41,7 +39,7 @@ function App() {
     <div className="App h-screen bg-slate-100 ">
       <Layout>
         <section className="bg-[#024469]">
-          <HeaderComponent />
+          <HeaderComponent year={year} showYear={showYear}/>
         </section>
 
         {/* Filter mobile */}
@@ -62,7 +60,7 @@ function App() {
 
         <section className=" bg-slate-100">
           <Layout className="container mx-auto py-3 md:py-8 bg-slate-100 px-5 lg:px-12">
-            <SidebarComponent prizeAmount={prizeAmount} onFindByYear={findByYear} onSetYear={setYear} onSetPrizeAmount={setPrizeAmount}/>
+            <SidebarComponent prizeAmount={prizeAmount} onFindByYear={findByYear} onSetYear={setYear} onSetPrizeAmount={setPrizeAmount} onSetShowYear={setShowYear}/>
             <ContentComponent />
           </Layout>
         </section>

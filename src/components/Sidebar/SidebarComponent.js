@@ -4,7 +4,7 @@ import FilterComponent from "../Filter/FilterComponent";
 const { Sider } = Layout;
 
 const SidebarComponent = (props) => {
-  const { prizeAmount, onFindByYear, onSetYear, onSetPrizeAmount } = props;
+  const { prizeAmount, onFindByYear, onSetYear, onSetPrizeAmount, onSetShowYear} = props;
   const [filterYears, setFilterYears] = useState([]);
 
   useEffect(() => {
@@ -27,6 +27,7 @@ const SidebarComponent = (props) => {
 
   const onSelectClear = () => {
     onSetPrizeAmount(0);
+    onSetShowYear(false);
   };
 
 
