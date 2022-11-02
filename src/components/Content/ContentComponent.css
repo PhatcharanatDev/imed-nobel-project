@@ -1,0 +1,33 @@
+/* Custom Antd */
+.ant-pagination-item-active {
+  border-color: #024469 !important;
+}
+
+.ant-pagination-item:hover {
+  border-color: #024469 !important;
+}
+
+.ant-pagination-item-active a {
+  color: #024469 !important ;
+}
+
+.ant-pagination-item a:hover {
+  color: #024469 !important ;
+}
+
+.ant-pagination-next:focus-visible .ant-pagination-item-link,
+.ant-pagination-next:hover .ant-pagination-item-link,
+.ant-pagination-prev:focus-visible .ant-pagination-item-link,
+.ant-pagination-prev:hover .ant-pagination-item-link {
+  color: #024469 !important ;
+  border-color: #024469 !important ;
+}
+
+.ant-pagination-jump-next
+  .ant-pagination-item-container
+  .ant-pagination-item-link-icon,
+.ant-pagination-jump-prev
+  .ant-pagination-item-container
+  .ant-pagination-item-link-icon {
+  color: #024469 !important ;
+}
