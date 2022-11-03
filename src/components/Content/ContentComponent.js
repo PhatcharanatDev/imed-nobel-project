@@ -35,7 +35,7 @@ const ContentComponent = (props) => {
             onChange={onPageChange}
           />
         ) : (
-          <h1 className="text-xl text-slate-500 font-normal">
+          <h1 className="text-xl text-slate-500 font-normal text-center">
             - Please select a year -
           </h1>
         )}

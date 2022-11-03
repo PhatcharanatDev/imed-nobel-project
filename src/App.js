@@ -74,7 +74,7 @@ function App() {
     <Layout className="h-auto">
       <HeaderComponent year={year} showYear={showYear} />
 
-      {/* Filter button mobile */}
+      {/* Filters button (mobile) */}
       <div className="bg-white text-end py-3 px-12 md:hidden">
         <Button
           onClick={() => setFilterModalOpen(!filterModalOpen)}

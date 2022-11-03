@@ -76,8 +76,8 @@ const FilterComponent = (props) => {
 
       <hr className="mx-0" />
       <div className="flex justify-between mx-2">
-        <h2 className="mb-1 text-slate-500 font-normal">Prize Amount</h2>
-        <p>{Number(prizeAmount).toLocaleString()}</p>
+        <h2 className="text-slate-500 text-sm font-normal mb-1 ">Prize Amount Total</h2>
+        <p className="text-sm">{Number(prizeAmount).toLocaleString()}</p>
       </div>
     </div>
   );
