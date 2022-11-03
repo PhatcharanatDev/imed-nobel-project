@@ -11,8 +11,9 @@ function App() {
   const [filterModalOpen, setFilterModalOpen] = useState(false);
   const [applyLoading, setApplyLoadings] = useState(false);
   const [year, setYear] = useState(0);
+  const [yearSelected, setYearSelected] = useState(0);
   const [page, setPage] = useState(1);
-  const [pageSize] = useState(4);
+  const [pageSize] = useState(5);
   const [showYear, setShowYear] = useState(false);
   const [nobelPrizes, setNobelPrizes] = useState([]);
   const [meta, setMeta] = useState([]);
@@ -21,7 +22,7 @@ function App() {
   const onChangePage = async (page) => {
     await axios
       .get(
-        `https://api.nobelprize.org/2.1/nobelPrizes?nobelPrizeYear=${year}&limit=${pageSize}&offset=${
+        `https://api.nobelprize.org/2.1/nobelPrizes?nobelPrizeYear=${yearSelected}&limit=${pageSize}&offset=${
           (page - 1) * pageSize
         }`
       )
@@ -53,6 +54,7 @@ function App() {
           setNobelPrizes(response.data.nobelPrizes);
           setMeta(response.data.meta);
           summaryPrizeAmount(response.data.nobelPrizes);
+          setYearSelected(year)
           setFilterModalOpen(false);
           setApplyLoadings(false);
         })
@@ -72,7 +74,7 @@ function App() {
 
   return (
     <Layout className="h-auto">
-      <HeaderComponent year={year} showYear={showYear} />
+      <HeaderComponent yearSelected={yearSelected} showYear={showYear} />
 
       {/* Filters button (mobile) */}
       <div className="bg-white text-end py-3 px-12 md:hidden">
