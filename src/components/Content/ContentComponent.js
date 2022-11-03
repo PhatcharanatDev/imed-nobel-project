@@ -20,7 +20,7 @@ const ContentComponent = (props) => {
 
   return (
     <Content className=" md:px-12 ">
-      <div className="bg-slate-100 text-center" style={{ minHeight: 580 }}>
+      <div className="bg-slate-100" style={{ minHeight: 580 }}>
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 mb-5">
           {nobelPrizeItems}
         </div>
@@ -35,7 +35,7 @@ const ContentComponent = (props) => {
             onChange={onPageChange}
           />
         ) : (
-          <h1 className="text-xl text-slate-500 font-normal">
+          <h1 className="text-xl text-slate-500 font-normal text-center">
             - Please select a year -
           </h1>
         )}
